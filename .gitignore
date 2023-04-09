@@ -1,0 +1,10 @@
+var/
+vendor/
+
+.idea/
+.vscode/
+
+# Composer
+composer.phar
+
+.task/
