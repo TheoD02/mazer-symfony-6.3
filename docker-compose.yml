@@ -48,7 +48,7 @@ services:
     networks:
       - service
     ports:
-      - 33182:3306
+      - ${DATABASE_PORT-3306}:3306
     volumes:
       - database_docker:/var/lib/mysql
 
