@@ -17,8 +17,19 @@ includes:
     taskfile: "../../tasks/Composer.yml"
   qa:
     taskfile: "../../tasks/Qa.yml"
+  test:
+    taskfile: "../../tasks/Test.yml"
 
 tasks:
+  install:
+    label: "🐳 Installing project..."
+    cmds:
+      - task: docker:start
+      - task: composer:install
+      - task: symfony:translation-pull
+      - task: symfony:fixtures-reset
+      - task: symfony:lint-all
+
   start:
     label: "🐳 Starting project..."
     desc: "Start the Docker containers for this project"
@@ -27,6 +38,4 @@ tasks:
     cmds:
       - task: docker:start
       - task: composer:install
-      - task: symfony:translation-pull
-      - task: symfony:fixtures-reset
       - task: symfony:lint-all

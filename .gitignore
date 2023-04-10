@@ -8,3 +8,5 @@ vendor/
 composer.phar
 
 .task/
+
+.phpunit.result.cache
