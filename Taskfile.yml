@@ -19,6 +19,8 @@ includes:
     taskfile: "../../tasks/Qa.yml"
   test:
     taskfile: "../../tasks/Test.yml"
+  npm:
+    taskfile: "../../tasks/Npm.yml"
 
 tasks:
   install:

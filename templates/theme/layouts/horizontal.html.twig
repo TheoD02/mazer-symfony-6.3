@@ -1,0 +1,14 @@
+{% extends 'theme/layouts/base.html.twig' %}
+
+{% block body %}
+    <div id="app">
+        <div id="main" class="layout-horizontal">
+            {% include 'theme/layouts/partials/horizontal/_header.html.twig' %}
+            <div class="content-wrapper container">
+                {% include 'common/_flash_messages.html.twig' %}
+                {% block content %}{% endblock %}
+            </div>
+            {% include 'theme/layouts/partials/horizontal/_footer.html.twig' %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'theme/layouts/base.html.twig' %}
+
+{% block body %}
+    <div id="app">
+        {% include 'theme/layouts/partials/_sidebar.html.twig' %}
+        <div id="main" class="layout-navbar navbar-fixed">
+            {% include 'theme/layouts/partials/vetical_navbar/_header.html.twig' %}
+            <div id="main-content">
+                {% include 'common/_flash_messages.html.twig' %}
+                {% block content %}{% endblock %}
+            </div>
+            {% include 'theme/layouts/partials/vetical_navbar/_footer.html.twig' %}
+        </div>
+    </div>
+{% endblock %}

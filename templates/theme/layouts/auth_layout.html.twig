@@ -1,0 +1,12 @@
+{% extends 'theme/layouts/base.html.twig' %}
+
+{% block after_stylesheets %}
+    {{ encore_entry_link_tags('pages-auth') }}
+{% endblock %}
+
+{% block body %}
+    <div id="auth">
+        {% include 'common/_flash_messages.html.twig' %}
+        {% block content %}{% endblock %}
+    </div>
+{% endblock %}

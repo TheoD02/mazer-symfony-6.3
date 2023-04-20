@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="{{ app.request.locale }}" {{ html_attributes ?? "" }}>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block meta %}{% endblock %}
+    <title>{% block title %}{% endblock %}</title>
+
+    {% block before_stylesheets %}{% endblock %}
+    {% block theme_stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+        {{ encore_entry_link_tags('app-dark') }}
+    {% endblock %}
+    {% block after_stylesheets %}{% endblock %}
+
+    <link rel="shortcut icon" href="{{ asset('assets/images/logo/favicon.png') }}" type="image/x-icon">
+</head>
+<body>
+    {% block body %}{% endblock %}
+    {% block js_before %}{% endblock %}
+    {% block js_themes %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
+    {% block js_after %}{% endblock %}
+</body>
+</html>

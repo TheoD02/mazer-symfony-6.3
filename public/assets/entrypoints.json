@@ -1,0 +1,41 @@
+{
+  "entrypoints": {
+    "app": {
+      "js": [
+        "/assets/runtime.js",
+        "/assets/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_bootstrap_dist_js_boo-440d48.js",
+        "/assets/app.js"
+      ],
+      "css": [
+        "/assets/app.css"
+      ]
+    },
+    "app-dark": {
+      "js": [
+        "/assets/runtime.js",
+        "/assets/app-dark.js"
+      ],
+      "css": [
+        "/assets/app-dark.css"
+      ]
+    },
+    "pages-error": {
+      "js": [
+        "/assets/runtime.js",
+        "/assets/pages-error.js"
+      ],
+      "css": [
+        "/assets/pages-error.css"
+      ]
+    },
+    "pages-auth": {
+      "js": [
+        "/assets/runtime.js",
+        "/assets/pages-auth.js"
+      ],
+      "css": [
+        "/assets/pages-auth.css"
+      ]
+    }
+  }
+}

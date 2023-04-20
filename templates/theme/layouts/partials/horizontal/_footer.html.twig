@@ -1,0 +1,13 @@
+{% extends 'theme/layouts/partials/_footer.html.twig' %}
+
+{% block content %}
+    <div class="d-flex text-center">
+        <div class="p-2 flex-fill">Flex item with a lot of content</div>
+        <div class="p-2 flex-fill">
+            <div class="d-flex justify-content-center">
+                {% include 'theme/layouts/partials/components/_theme_switch.html.twig' %}
+            </div>
+        </div>
+        <div class="p-2 flex-fill">Flex item</div>
+    </div>
+{% endblock %}

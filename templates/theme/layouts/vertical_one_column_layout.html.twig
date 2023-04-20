@@ -1,0 +1,14 @@
+{% extends 'theme/layouts/base.html.twig' %}
+
+{% block body %}
+    <nav class="navbar navbar-light">
+        <div class="container d-block">
+            <a href="{{ path('app_front_home') }}"><i class="bi bi-chevron-left"></i></a>
+            <a class="navbar-brand ms-4" href="{{ path('app_front_home') }}">
+                <img src="assets/static/images/logo/logo.svg">
+            </a>
+        </div>
+    </nav>
+    {% include 'common/_flash_messages.html.twig' %}
+    {% block content %}{% endblock %}
+{% endblock %}

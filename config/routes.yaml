@@ -1,5 +1,23 @@
-controllers:
-    resource:
-        path: ../src/Controller/
-        namespace: App\Controller
-    type: attribute
+home:
+  path: /
+  controller: App\Controller\Front\HomeController::index
+
+front_controllers:
+  resource:
+    path: ../src/Controller/Front
+    namespace: App\Controller\Front
+  type: attribute
+  prefix: /{_locale}
+  name_prefix: app_front_
+  requirements:
+    _locale: '%app.supported_locales%'
+
+back_controllers:
+  resource:
+    path: ../src/Controller/Back
+    namespace: App\Controller\Back
+  type: attribute
+  prefix: /{_locale}/admin
+  name_prefix: app_admin_
+  requirements:
+    _locale: '%app.supported_locales%'

@@ -1,0 +1,19 @@
+{% extends 'theme/layouts/base.html.twig' %}
+
+{% block body %}
+    <div id="app">
+        <div id="sidebar">
+            {% include "theme/layouts/partials/_sidebar.html.twig" %}
+        </div>
+        <div id="main">
+            <header class="mb-3">
+                <a href="#" class="burger-btn d-block d-xl-none">
+                    <i class="bi bi-justify fs-3"></i>
+                </a>
+            </header>
+            {% include 'common/_flash_messages.html.twig' %}
+            {% block content %}{% endblock %}
+            {% include 'theme/layouts/partials/default/_footer.html.twig' %}
+        </div>
+    </div>
+{% endblock %}
