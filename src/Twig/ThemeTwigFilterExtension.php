@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Twig;
 
-use JetBrains\PhpStorm\Pure;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Twig\Extension\AbstractExtension;
@@ -12,6 +13,7 @@ use Twig\TwigFunction;
 class ThemeTwigFilterExtension extends AbstractExtension
 {
     protected ?Request $request;
+
     protected ?string $activeRoute;
 
     public function __construct(RequestStack $requestStack)
@@ -19,26 +21,24 @@ class ThemeTwigFilterExtension extends AbstractExtension
         $this->request = $requestStack->getCurrentRequest();
     }
 
-    public function getFunctions()
+    /**
+     * @return array<TwigFunction>
+     */
+    public function getFunctions(): array
     {
-        return array(
-            new TwigFunction('is_active', array($this, 'isActiveFunction')),
-        );
+        return [new TwigFunction('is_active', [$this, 'isActiveFunction'])];
     }
 
     public function getFilters(): array
     {
-        return [
-            new TwigFilter('is_active', array($this, 'isActiveFilter')),
-        ];
+        return [new TwigFilter('is_active', [$this, 'isActiveFilter'])];
     }
 
     /**
      * Check the active menu item by route name partial
-     *     Example: {{ is_active('routename', true) }}
+     *     Example: {{ is_active('routename', true) }}.
      *
      * @param string $routeName The route name
-     *
      * @param bool   $lazyCheck Defaults to false; only needed for complex routes
      *
      * @return string Empty string or "active current" string
@@ -60,13 +60,13 @@ class ThemeTwigFilterExtension extends AbstractExtension
 
     /**
      * Check the active menu item by route name partial
-     *     Example: {{ 'routename'|is_active }}
+     *     Example: {{ 'routename'|is_active }}.
      *
      * @param string $routeName The route name
      *
      * @return string Empty string or "active current" string
      */
-    #[Pure] public function isActiveFilter(string $routeName): string
+    public function isActiveFilter(string $routeName): string
     {
         $this->activeRoute = $this->request->attributes->get('_route');
 
@@ -77,26 +77,22 @@ class ThemeTwigFilterExtension extends AbstractExtension
     }
 
     /**
-     * Create string of class attributes
-     *
-     * @param $isCurrent
-     * @param $isActive
+     * Create string of class attributes.
      *
      * @return string The string of class attributes
      */
-    protected function buildClassAttr($isCurrent, $isActive): string
+    protected function buildClassAttr(bool $isCurrent, bool $isActive): string
     {
         $result = '';
 
-        if (true === $isCurrent) {
+        if ($isCurrent === true) {
             $result = 'current active';
-        } elseif (true === $isActive) {
+        } elseif ($isActive === true) {
             $result = 'active';
         }
 
         return $result;
     }
-
 
     /***
      * Check route name against the current / active route
@@ -125,11 +121,15 @@ class ThemeTwigFilterExtension extends AbstractExtension
     private function comparePartialRoute(string $routeName): bool
     {
         $comparisonLength = strlen($routeName);
-        $routeCheck = substr_compare($this->activeRoute, $routeName, 0, length: $comparisonLength);
+        $routeCheck = substr_compare(
+            $this->activeRoute,
+            $routeName,
+            0,
+            length: $comparisonLength // @phpstan-ignore-line
+        );
 
-        return 0 === $routeCheck;
+        return $routeCheck === 0;
     }
-
 
     /***
      * Check route name against a partial of the current / active route
@@ -146,13 +146,18 @@ class ThemeTwigFilterExtension extends AbstractExtension
     {
         $pattern = '/(.*)\./';
         preg_match($pattern, $routeName, $matches);
-        if ($matches) {
+        if (count($matches) > 0) {
             $replacedRouteName = $matches[0];
 
             $comparisonLength = strlen($replacedRouteName);
-            $routeCheck = substr_compare($this->activeRoute, $replacedRouteName, 0, length: $comparisonLength);
+            $routeCheck = substr_compare(
+                $this->activeRoute,
+                $replacedRouteName,
+                0,
+                length: $comparisonLength // @phpstan-ignore-line
+            );
 
-            return 0 === $routeCheck;
+            return $routeCheck === 0;
         }
 
         return false;

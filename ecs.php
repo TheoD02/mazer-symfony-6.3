@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use PhpCsFixer\Fixer\Import\NoUnusedImportsFixer;
+use PhpCsFixer\Fixer\Phpdoc\AlignMultilineCommentFixer;
 use Symplify\EasyCodingStandard\Config\ECSConfig;
 use Symplify\EasyCodingStandard\ValueObject\Set\SetList;
 
@@ -17,6 +18,20 @@ return function (ECSConfig $ecsConfig): void {
     // this way you add a single rule
     $ecsConfig->rules([
         NoUnusedImportsFixer::class,
+    ]);
+    $ecsConfig->ruleWithConfiguration(AlignMultilineCommentFixer::class, [
+        'comment_type' => 'all_multiline',
+    ]);
+
+    $ecsConfig->cacheDirectory(__DIR__ . '/var/cache/ecs');
+    $ecsConfig->lineEnding("\n");
+
+
+    $ecsConfig->dynamicSets([
+        '@Symfony',
+        '@PHP80Migration',
+        '@PHP81Migration',
+        '@PHP82Migration',
     ]);
 
     // this way you can add sets - group of rules

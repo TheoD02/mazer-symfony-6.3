@@ -1,0 +1,55 @@
+parameters:
+  paths:
+    - ./src
+  #exclude_files:
+  #    - '#.*test.*#'
+  layers:
+    - name: Symfony
+      collectors:
+        - type: classLike
+          regex: .*Symfony.*
+    - name: Doctrine
+      collectors:
+        - type: classLike
+          regex: .*Doctrine.*
+    - name: Controller
+      collectors:
+        - type: directory
+          regex: .*Controller.*
+    - name: Manager
+      collectors:
+        - type: directory
+          regex: .*Manager.*
+    - name: Repository
+      collectors:
+        - type: directory
+          regex: .*Repository.*
+    - name: Service
+      collectors:
+        - type: directory
+          regex: .*Service.*
+    - name: Entity
+      collectors:
+        - type: directory
+          regex: .*Entity.*
+
+  ruleset:
+    Controller:
+      - Service
+      - Symfony
+    Manager:
+      - Repository
+      - Entity
+      - Symfony
+    Service:
+      - Manager
+      - Entity
+      - Symfony
+    Repository:
+      - Entity
+      - Doctrine
+      - Symfony
+    Entity:
+      - Repository
+      - Doctrine
+      - Symfony

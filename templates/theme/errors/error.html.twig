@@ -7,7 +7,7 @@
                 <img class="img-error" src="assets/static/images/samples/error-403.svg" alt="Not Found">
                 <h1 class="error-title">{{ title|trans }}</h1>
                 <p class="fs-5 text-gray-600">{{ description|trans }}</p>
-                <a href="{{ path(redirect_path ?? 'app_front_home') }}" class="btn btn-lg btn-outline-primary mt-3">
+                <a href="{{ path(redirect_path ?? 'app_front_home', {'_locale': app.request.preferredLanguage|slice(0, 2)}) }}" class="btn btn-lg btn-outline-primary mt-3">
                     {{ (redirect_btn_trad ?? 'label.error.go_home')|trans }}
                 </a>
             </div>

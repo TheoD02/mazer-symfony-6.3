@@ -1,0 +1,76 @@
+includes:
+    - vendor/slam/phpstan-extensions/conf/not-now-rules.neon
+    - vendor/slam/phpstan-extensions/conf/symfony-rules.neon
+parameters:
+    level: 7
+    paths:
+        - src
+        - tests
+    parallel:
+        maximumNumberOfProcesses: 32
+    #symfony:
+    #    containerXmlPath: var/cache/dev/App_KernelDevDebugContainer.xml
+    disallowedFunctionCalls:
+            -
+                function:
+                    - 'var_dump()'
+                    - 'print_r()'
+                    - 'dd()'
+                    - 'dump()'
+                    - 'exit()'
+                    - 'die()'
+                    - 'debug()'
+                    - 'debug_zval_dump()'
+                message: 'use only for debugging'
+    shipmonkRules:
+        classSuffixNaming:
+            superclassToSuffixMapping!:
+                \Exception: Exception
+                \PHPUnit\Framework\TestCase: Test
+                \Symfony\Component\Console\Command\Command: Command
+                \Symfony\Bundle\FrameworkBundle\Controller\AbstractController: Controller
+                \Symfony\Component\Form\AbstractType: Type
+                \Symfony\Component\Validator\Constraint: Constraint
+                \Symfony\Component\Validator\ConstraintValidator: ConstraintValidator
+        allowComparingOnlyComparableTypes:
+             enabled: true
+        enforceEnumMatch:
+            enabled: true
+        enforceListReturn:
+            enabled: true
+        enforceNativeReturnTypehint:
+            enabled: true
+        forbidCast:
+            blacklist!: ['(array)', '(object)', '(unset)']
+        forbidCheckedExceptionInYieldingMethod:
+            enabled: true
+        forbidEnumInFunctionArguments:
+            enabled: true
+        forbidFetchOnMixed:
+            enabled: true
+        forbidMethodCallOnMixed:
+            enabled: true
+        forbidNullInAssignOperations:
+            enabled: true
+        forbidNullInBinaryOperations:
+            enabled: true
+        forbidNullInInterpolatedString:
+            enabled: true
+        forbidProtectedEnumMethod:
+            enabled: true
+        forbidVariableTypeOverwriting:
+            enabled: true
+        forbidUnsetClassField:
+            enabled: true
+        forbidUselessNullableReturn:
+            enabled: true
+        uselessPrivatePropertyDefaultValue:
+            enabled: true
+        uselessPrivatePropertyNullability:
+            enabled: true
+        forbidUnusedException:
+            enabled: true
+        forbidUnusedMatchResult:
+            enabled: true
+        requirePreviousExceptionPass:
+            enabled: true

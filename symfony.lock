@@ -35,6 +35,24 @@
             "migrations/.gitignore"
         ]
     },
+    "friendsofphp/php-cs-fixer": {
+        "version": "3.19",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "3.0",
+            "ref": "be2103eb4a20942e28a6dd87736669b757132435"
+        },
+        "files": [
+            ".php-cs-fixer.dist.php"
+        ]
+    },
+    "php-flasher/flasher-sweetalert-symfony": {
+        "version": "v1.15.3"
+    },
+    "php-flasher/flasher-symfony": {
+        "version": "v1.15.3"
+    },
     "phpunit/phpunit": {
         "version": "9.6",
         "recipe": {
@@ -47,6 +65,18 @@
             ".env.test",
             "phpunit.xml.dist",
             "tests/bootstrap.php"
+        ]
+    },
+    "qossmic/deptrac-shim": {
+        "version": "1.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "main",
+            "version": "0.19",
+            "ref": "3c3daab46226c37fc14e10faf81df737a3039d96"
+        },
+        "files": [
+            "deptrac.yaml"
         ]
     },
     "sensio/framework-extra-bundle": {

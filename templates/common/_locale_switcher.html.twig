@@ -1,0 +1,24 @@
+<div class="dropdown">
+    <a href="#" id="topbarUserDropdown"
+       class="user-dropdown d-flex align-items-center dropend dropdown-toggle "
+       data-bs-toggle="dropdown" aria-expanded="false">
+        <div class="avatar avatar-md2">
+            <img src="https://flagcdn.com/{{ app.request.locale == 'en' ? 'gb' : app.request.locale }}.svg" height="18" width="32" alt="{{ app.request.locale|locale_name(app.request.locale) }}"/>
+        </div>
+        <div class="text">
+            <h6 class="user-dropdown-name">
+                {{ app.request.locale|locale_name(app.request.locale)|u.title }}
+            </h6>
+        </div>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end shadow-lg" aria-labelledby="topbarUserDropdown">
+        {% for locale in supported_locales|split('|') %}
+            <li>
+                <a class="dropdown-item" href="{{ path('app_front_home', {'_locale': locale}) }}">
+                    <img src="https://flagcdn.com/{{ locale == 'en' ? 'gb' : locale }}.svg" height="18" width="32" alt="{{ locale|locale_name(locale)|u.title }}"/>
+                    {{ locale|locale_name(locale)|u.title }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>

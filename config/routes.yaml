@@ -2,6 +2,10 @@ home:
   path: /
   controller: App\Controller\Front\HomeController::index
 
+controllers:
+  resource: ../src/Controller/
+  type: attribute
+
 front_controllers:
   resource:
     path: ../src/Controller/Front

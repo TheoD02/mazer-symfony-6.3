@@ -23,7 +23,7 @@ security:
   # Note: Only the *first* access control that matches will be used
   access_control:
     - { path: ^/(%app.supported_locales%), roles: [ PUBLIC_ACCESS ] }
-    - { path: ^/(%app.supported_locales%)/admin, roles: [ PUBLIC_ACCESS ] }
+    - { path: ^/(%app.supported_locales%)/admin, roles: [ ROLE_ADMIN, ROLE_SUPER_ADMIN ] }
 
 when@test:
   security:

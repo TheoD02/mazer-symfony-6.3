@@ -1,8 +1,8 @@
 {
-    "type": "project",
+    "name": "symfony-6.3-boilerplate/mazer-2.1.0",
+    "description": "A Symfony Boilerplate with Mazer 2.1.0 theme",
     "license": "proprietary",
-    "minimum-stability": "dev",
-    "prefer-stable": true,
+    "type": "project",
     "require": {
         "php": ">=8.2",
         "ext-ctype": "*",
@@ -11,6 +11,7 @@
         "doctrine/doctrine-bundle": "^2.9",
         "doctrine/doctrine-migrations-bundle": "^3.2",
         "doctrine/orm": "^2.14",
+        "php-flasher/flasher-sweetalert-symfony": "^1.15",
         "phpdocumentor/reflection-docblock": "^5.3",
         "phpstan/phpdoc-parser": "^1.18",
         "sensio/framework-extra-bundle": "^6.1",
@@ -41,26 +42,39 @@
         "symfony/web-link": "6.3.*",
         "symfony/webpack-encore-bundle": "^1.16",
         "symfony/yaml": "6.3.*",
-        "twig/extra-bundle": "^2.12|^3.0",
-        "twig/twig": "^2.12|^3.0"
+        "twig/extra-bundle": "^2.12 || ^3.0",
+        "twig/intl-extra": "^3.6",
+        "twig/string-extra": "^3.6",
+        "twig/twig": "^2.12 || ^3.0"
     },
-    "config": {
-        "allow-plugins": {
-            "php-http/discovery": true,
-            "symfony/flex": true,
-            "symfony/runtime": true
-        },
-        "sort-packages": true
-    },
-    "autoload": {
-        "psr-4": {
-            "App\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "App\\Tests\\": "tests/"
-        }
+    "require-dev": {
+        "ergebnis/composer-normalize": "^2.31",
+        "friendsofphp/php-cs-fixer": "^3.17",
+        "friendsoftwig/twigcs": ">=4",
+        "maglnet/composer-require-checker": "^4.6",
+        "phpro/grumphp": "^1.16",
+        "phpstan/extension-installer": "^1.3",
+        "phpstan/phpstan": "^1.10",
+        "phpstan/phpstan-doctrine": "^1.3",
+        "phpstan/phpstan-phpunit": "^1.3",
+        "phpstan/phpstan-symfony": "^1.3",
+        "phpstan/phpstan-webmozart-assert": "^1.2",
+        "phpunit/phpunit": "^10.0",
+        "qossmic/deptrac-shim": "^1.0",
+        "shipmonk/phpstan-rules": "^2.6",
+        "slam/phpstan-extensions": "^6.0",
+        "spaze/phpstan-disallowed-calls": "^2.15",
+        "struggle-for-php/sfp-phpstan-psr-log": "^0.13.0",
+        "symfony/browser-kit": "6.3.*",
+        "symfony/css-selector": "6.3.*",
+        "symfony/debug-bundle": "6.3.*",
+        "symfony/maker-bundle": "^1.0",
+        "symfony/phpunit-bridge": "^6.3",
+        "symfony/stopwatch": "6.3.*",
+        "symfony/web-profiler-bundle": "6.3.*",
+        "symplify/easy-coding-standard": "^11.3",
+        "thecodingmachine/phpstan-strict-rules": "^1.0",
+        "voku/phpstan-rules": "^3.2"
     },
     "replace": {
         "symfony/polyfill-ctype": "*",
@@ -71,20 +85,31 @@
         "symfony/polyfill-php80": "*",
         "symfony/polyfill-php81": "*"
     },
-    "scripts": {
-        "auto-scripts": {
-            "cache:clear": "symfony-cmd",
-            "assets:install %PUBLIC_DIR%": "symfony-cmd"
-        },
-        "post-install-cmd": [
-            "@auto-scripts"
-        ],
-        "post-update-cmd": [
-            "@auto-scripts"
-        ]
-    },
     "conflict": {
         "symfony/symfony": "*"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "App\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "php-http/discovery": true,
+            "symfony/flex": true,
+            "symfony/runtime": true,
+            "ergebnis/composer-normalize": true,
+            "phpro/grumphp": true,
+            "phpstan/extension-installer": true
+        },
+        "sort-packages": true
     },
     "extra": {
         "symfony": {
@@ -92,16 +117,16 @@
             "require": "6.3.*"
         }
     },
-    "require-dev": {
-        "phpstan/phpstan": "^1.10",
-        "phpunit/phpunit": "^9.5",
-        "symfony/browser-kit": "6.3.*",
-        "symfony/css-selector": "6.3.*",
-        "symfony/debug-bundle": "6.3.*",
-        "symfony/maker-bundle": "^1.0",
-        "symfony/phpunit-bridge": "^6.2",
-        "symfony/stopwatch": "6.3.*",
-        "symfony/web-profiler-bundle": "6.3.*",
-        "symplify/easy-coding-standard": "^11.3"
+    "scripts": {
+        "post-install-cmd": [
+            "@auto-scripts"
+        ],
+        "post-update-cmd": [
+            "@auto-scripts"
+        ],
+        "auto-scripts": {
+            "cache:clear": "symfony-cmd",
+            "assets:install %PUBLIC_DIR%": "symfony-cmd"
+        }
     }
 }
